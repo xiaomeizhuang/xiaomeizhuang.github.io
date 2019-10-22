@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/23_102.jpg">
 <meta property="og:image" content="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/25_113.jpg">
 <meta property="og:image" content="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/26_138.jpg">
-<meta property="og:updated_time" content="2019-10-21T12:51:16.903Z">
+<meta property="og:updated_time" content="2019-10-21T15:43:16.329Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer小结">
 <meta name="twitter:description" content="抱着好奇心翻开了剑指offer，原来是50道编程题的解题啊。随便翻了一下翻到第23题，发现讲得很通俗易懂，所以决定要把它看完（还没有看完，也不是按顺序看）。可是仔细看时发现，有些题解只描述了过程，为什么这样做却没有直白地写出来，所以我在解释部分补充了一点点自己的思考，还包括草图，也包括具体讨论判断条件或者边界条件的情况。语言用的是C++，草图用Ilustrator画会比较慢，所以暂时先把稿纸拍上来">
@@ -139,8 +139,8 @@
 <p>题目：</p>
 <p><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/" target="_blank" rel="noopener">leetcode：153. Find Minimum in Rotated Sorted Array</a></p>
 <p>解释：</p>
-<p>当然可以遍历筛选出最小的元素，但这是个排序数组，所以不妨试试二分搜索。旋转后的数组是两个升序序列，最小的元素在某个升序序列的起点，因此，位于mid位置的元素如果小于start处的元素，说明mid元素位于右侧上升，它的最小元素肯定位于mid元素的左侧，因mid位置为为下次检索范围的end。如果mid位置的元素大于start处的元素，❓</p>
-<p>题目要求没有重复的元素，因此在while循环中，<span class="math inline">\(nums[sart]&lt;=nums[end]\)</span>这个判断条件中考虑到等于的情况，说明数组只有一个元素，可以直接输出最小值；考虑小于的情况，说明第一个元素即是最小值。</p>
+<p>当然可以遍历筛选出最小的元素，但这是个排序数组，所以不妨试试二分搜索。旋转后的数组是两个升序序列，最小的元素在第二个升序序列的起点，因此，位于mid位置的元素如果小于start处的元素，说明mid元素位于右侧上升，它的最小元素肯定位于mid元素的左侧，因mid位置为为下次检索范围的end。如果mid位置的元素大于start处的元素，❓</p>
+<p>题目声明没有重复的元素，而在while循环中的<span class="math inline">\(nums[sart]&lt;=nums[end]\)</span>这个判断条件中考虑到等于的情况，因此可能是数组只有一个元素的情况，可以直接输出最小值；还有另一种可能，旋转0个元素，那么第一个元素即是最小值。</p>
 <p>但是<span class="math inline">\(nums[mid]&gt;=nums[start]\)</span>中为什么要考虑到相等这种情况呢？当它们相等时，排除元素重复的原因，那么就是<span class="math inline">\(mid\)</span>和<span class="math inline">\(start\)</span>指向同一个元素。上一步<span class="math inline">\(mid=(start+end)/2\)</span>中，当<span class="math inline">\(start\)</span>和<span class="math inline">\(end\)</span>相差为1时（while循环的条件<span class="math inline">\(start&lt;end\)</span>）才会出现<span class="math inline">\(mid=start\)</span>，这种情况下说明mid可算找到较小升序列的start（最小值）了，所以判断条件中=的情况要放在这里而不是else的情况中。</p>
 <p>代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findMin</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> start=<span class="number">0</span>, end=nums.size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(start&lt;end)<span class="comment">//还有这里可以控制输出</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//第一个元素已经是最小，说明旋转0个元素</span></span><br><span class="line">            <span class="keyword">if</span>(nums[start]&lt;=nums[end])</span><br><span class="line">                <span class="keyword">return</span> nums[start];</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">int</span> mid=(start+end)/<span class="number">2</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&gt;=nums[start])</span><br><span class="line">                start=mid+<span class="number">1</span>;<span class="comment">//说明mid在左侧的上升序列</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                end=mid;<span class="comment">//说明mid在右侧的上升序列</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums[start];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -285,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/" data-id="ck20jjryv0003kvl74h0wrat5" class="article-share-link">Share</a>
+      <a data-url="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/" data-id="ck20jmd990003lql7p48fai4d" class="article-share-link">Share</a>
       
       
     </footer>
