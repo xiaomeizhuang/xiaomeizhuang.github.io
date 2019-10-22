@@ -7,12 +7,12 @@
   
   <title>剑指offer小结 | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="抱着好奇心翻开了剑指offer，原来是50道编程题的解题啊。随便翻了一下翻到第23题，发现讲得很通俗易懂，所以决定要把它看完（还没有看完，也不是按顺序看）。可是仔细看时发现，有些题解只描述了过程，为什么这样做却没有直白地写出来，所以我在解释部分补充了一点点自己的思考，还包括草图，也包括具体讨论判断条件或者边界条件的情况。语言用的是C++，草图用Ilustrator画会比较慢，所以暂时先把稿纸拍上来">
+  <meta name="description" content="抱着好奇心翻开了剑指offer，原来是50道编程题的解题啊。随便翻了一下翻到第23题，发现讲得很通俗易懂，所以决定要把它看完（还没有看完，也不是按顺序看）。可是仔细看时发现，有些题解只描述了过程，为什么这样做却没有直白地写出来，所以我在解释部分补充了一点点自己的思考，包括具体讨论判断条件或者边界条件的情况，还包括草图（加载有点儿慢）。语言用的是C++，草图用Ilustrator画会比较久，所以暂时">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指offer小结">
 <meta property="og:url" content="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="抱着好奇心翻开了剑指offer，原来是50道编程题的解题啊。随便翻了一下翻到第23题，发现讲得很通俗易懂，所以决定要把它看完（还没有看完，也不是按顺序看）。可是仔细看时发现，有些题解只描述了过程，为什么这样做却没有直白地写出来，所以我在解释部分补充了一点点自己的思考，还包括草图，也包括具体讨论判断条件或者边界条件的情况。语言用的是C++，草图用Ilustrator画会比较慢，所以暂时先把稿纸拍上来">
+<meta property="og:description" content="抱着好奇心翻开了剑指offer，原来是50道编程题的解题啊。随便翻了一下翻到第23题，发现讲得很通俗易懂，所以决定要把它看完（还没有看完，也不是按顺序看）。可是仔细看时发现，有些题解只描述了过程，为什么这样做却没有直白地写出来，所以我在解释部分补充了一点点自己的思考，包括具体讨论判断条件或者边界条件的情况，还包括草图（加载有点儿慢）。语言用的是C++，草图用Ilustrator画会比较久，所以暂时">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/3_240.jpg">
 <meta property="og:image" content="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/8_153_1_2.jpg">
@@ -22,10 +22,10 @@
 <meta property="og:image" content="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/23_102.jpg">
 <meta property="og:image" content="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/25_113.jpg">
 <meta property="og:image" content="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/26_138.jpg">
-<meta property="og:updated_time" content="2019-10-22T12:30:44.918Z">
+<meta property="og:updated_time" content="2019-10-22T12:39:32.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer小结">
-<meta name="twitter:description" content="抱着好奇心翻开了剑指offer，原来是50道编程题的解题啊。随便翻了一下翻到第23题，发现讲得很通俗易懂，所以决定要把它看完（还没有看完，也不是按顺序看）。可是仔细看时发现，有些题解只描述了过程，为什么这样做却没有直白地写出来，所以我在解释部分补充了一点点自己的思考，还包括草图，也包括具体讨论判断条件或者边界条件的情况。语言用的是C++，草图用Ilustrator画会比较慢，所以暂时先把稿纸拍上来">
+<meta name="twitter:description" content="抱着好奇心翻开了剑指offer，原来是50道编程题的解题啊。随便翻了一下翻到第23题，发现讲得很通俗易懂，所以决定要把它看完（还没有看完，也不是按顺序看）。可是仔细看时发现，有些题解只描述了过程，为什么这样做却没有直白地写出来，所以我在解释部分补充了一点点自己的思考，包括具体讨论判断条件或者边界条件的情况，还包括草图（加载有点儿慢）。语言用的是C++，草图用Ilustrator画会比较久，所以暂时">
 <meta name="twitter:image" content="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/3_240.jpg">
   
   
@@ -102,7 +102,7 @@
           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值运算符函数"><span class="toc-number">1.</span> <span class="toc-text">赋值运算符函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现singleton模式"><span class="toc-number">2.</span> <span class="toc-text">实现Singleton模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二维数组中的查找"><span class="toc-number">3.</span> <span class="toc-text">二维数组中的查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#替换空格"><span class="toc-number">4.</span> <span class="toc-text">替换空格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从头到尾打印链表"><span class="toc-number">5.</span> <span class="toc-text">从头到尾打印链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重建二叉树"><span class="toc-number">6.</span> <span class="toc-text">重建二叉树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用两个栈实现队列"><span class="toc-number">7.</span> <span class="toc-text">用两个栈实现队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#旋转数组的最小数字"><span class="toc-number">8.</span> <span class="toc-text">旋转数组的最小数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#斐波那契数列"><span class="toc-number">9.</span> <span class="toc-text">斐波那契数列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二进制中1的个数"><span class="toc-number">10.</span> <span class="toc-text">二进制中1的个数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数值的整数次方"><span class="toc-number">11.</span> <span class="toc-text">数值的整数次方</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打印1到最大的n位数"><span class="toc-number">12.</span> <span class="toc-text">打印1到最大的n位数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在o1时间删除链表节点"><span class="toc-number">13.</span> <span class="toc-text">在O(1)时间删除链表节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调整数组顺序使奇数位于偶数前面"><span class="toc-number">14.</span> <span class="toc-text">调整数组顺序使奇数位于偶数前面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链表中倒数第k个结点"><span class="toc-number">15.</span> <span class="toc-text">链表中倒数第k个结点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反转链表"><span class="toc-number">16.</span> <span class="toc-text">反转链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并两个排序的链表"><span class="toc-number">17.</span> <span class="toc-text">合并两个排序的链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#树的子结构"><span class="toc-number">18.</span> <span class="toc-text">树的子结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉树的镜像"><span class="toc-number">19.</span> <span class="toc-text">二叉树的镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#顺时针打印矩阵"><span class="toc-number">20.</span> <span class="toc-text">顺时针打印矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包含min函数的栈"><span class="toc-number">21.</span> <span class="toc-text">包含min函数的栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#栈的压入弹出序列"><span class="toc-number">22.</span> <span class="toc-text">栈的压入、弹出序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从上往下打印二叉树"><span class="toc-number">23.</span> <span class="toc-text">从上往下打印二叉树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉搜索树的后序遍历序列"><span class="toc-number">24.</span> <span class="toc-text">二叉搜索树的后序遍历序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉树中和为某一值的路径"><span class="toc-number">25.</span> <span class="toc-text">二叉树中和为某一值的路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂链表的复制"><span class="toc-number">26.</span> <span class="toc-text">复杂链表的复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉搜索树与双向链表"><span class="toc-number">27.</span> <span class="toc-text">二叉搜索树与双向链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串的排列"><span class="toc-number">28.</span> <span class="toc-text">字符串的排列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组中出现次数超过一半的数字"><span class="toc-number">29.</span> <span class="toc-text">数组中出现次数超过一半的数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最小的k个数"><span class="toc-number">30.</span> <span class="toc-text">最小的k个数</span></a></li></ol>
         </div>
       
-        <p>抱着好奇心翻开了剑指offer，原来是50道编程题的解题啊。随便翻了一下翻到第23题，发现讲得很通俗易懂，所以决定要把它看完（还没有看完，也不是按顺序看）。可是仔细看时发现，有些题解只描述了过程，为什么这样做却没有直白地写出来，所以我在解释部分补充了一点点自己的思考，还包括草图，也包括具体讨论判断条件或者边界条件的情况。语言用的是C++，草图用Ilustrator画会比较慢，所以暂时先把稿纸拍上来😝（邮箱在About页，如果有错误可以得到指正再好不过啦～ <a id="more"></a></p>
+        <p>抱着好奇心翻开了剑指offer，原来是50道编程题的解题啊。随便翻了一下翻到第23题，发现讲得很通俗易懂，所以决定要把它看完（还没有看完，也不是按顺序看）。可是仔细看时发现，有些题解只描述了过程，为什么这样做却没有直白地写出来，所以我在解释部分补充了一点点自己的思考，包括具体讨论判断条件或者边界条件的情况，还包括草图（加载有点儿慢）。语言用的是C++，草图用Ilustrator画会比较久，所以暂时先把稿纸拍上来😝（邮箱在About页，如果有错误可以得到指正再好不过啦～ <a id="more"></a></p>
 <h3 id="赋值运算符函数">赋值运算符函数</h3>
 <p>题目：</p>
 <p>解释：</p>
@@ -143,7 +143,7 @@
 <p>解释：</p>
 <p>通过遍历筛选出数组最小的元素也是可行的，但是这个数组有序（只不过更小的一部分被旋转到数组的后方），因此可以试试二分搜索。</p>
 <p>对于数组搜索范围start到end，如果nums[start] &lt; nums[end]，说明start已经是最小值，直接返回nums[start]（图中绿色）；如果nums[start] &gt; nums[end]，那么最小值在其中的第二个升序序列的起点。前者是特殊情况，下面讨论后者该怎么分析：</p>
-<p>用二分搜索缩小范围时，第一种情况（图中红色）：如果最小值在数组的右侧，说明第一个升序序列长度大于数组半长，那么缩小搜索范围时撇去mid左侧的元素，包括mid处的元素，因为它位于第一个升序序列中，不可能是最小值，新范围直接从mid+1处开始；第二种情况（图中蓝色）如果最小值在数组的左侧，说明第二个升序序列的长度大于数组半长，那么缩小搜索范围时撇去mid之后的序列，不包括mid处的元素，因为它位于第二个升序序列，也有可能是最小值，新范围到mid处为止。如何表示缩小范围所依据的判断条件呢，用mid所在位置的元素B的大小判断，如果大于该搜索范围的start处的元素A，说明是第一种情况；如果小于该搜索范围的start元素A，说明是第二种情况。再分析一下边界条件：</p>
+<p>用二分搜索缩小范围时，第一种情况（图中红色）：如果最小值在数组的右侧，说明第一个升序序列长度大于数组半长，那么缩小搜索范围时撇去mid左侧的元素，包括mid处的元素，因为它位于第一个升序序列中，不可能是最小值，新范围直接从mid+1处开始；第二种情况（图中蓝色）：如果最小值在数组的左侧，说明第二个升序序列的长度大于数组半长，那么缩小搜索范围时撇去mid之后的序列，不包括mid处的元素，因为它位于第二个升序序列，也有可能是最小值，新范围到mid处为止。如何表示缩小范围所依据的判断条件呢，用mid所在位置的元素B的大小判断，如果大于该搜索范围的start处的元素A，说明是第一种情况；如果小于该搜索范围的start元素A，说明是第二种情况。再分析一下边界条件：</p>
 <p>第一种情况到达临界时，也就是缩小范围直到start，mid，end相邻，mid和end之间不再可能会有最小值，因此end处的元素C自然是最小值。第二种情况到达临界时，同样会缩小范围直到start，mid，end相邻，start和mid之间不再可能会有最小值，因此mid处的元素B就是最小值。不可能有A&gt;B&gt;C的情况，因为是两个升序序列拼接，最多只有不升序的两个相邻元素。</p>
 <p><img src="8_153_1_2.jpg"></p>
 <p>补充一下：while循环中的nums[sart]&lt;=nums[end]这个判断条件中考虑到等于的情况，有三种可能，数组只有一个元素时；旋转0个元素时；当该轮搜索范围的start=end时，意味着缩小范围直到end处，最小值位于end处（图中红色）。</p>
@@ -188,7 +188,8 @@
 <p>题目：</p>
 <p><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener">leetcode：19. Remove Nth Node From End of List</a></p>
 <p>解释：</p>
-<p>这个关于倒数第k个结点的题，leetcode中要求删除，剑指offer要求输出，下面按照leetcode的要求处理。题目要求一次遍历，因此先遍历一次统计出结点个数，计算倒数第k个结点的顺序位置，再遍历第二次找到该结点的方法不可行。</p>
+<p>这个关于倒数第k个结点的题，leetcode中要求删除，剑指offer要求输出，下面按照leetcode的要求处理。</p>
+<p>题目要求一次遍历，因此先遍历一次统计出结点个数，计算倒数第k个结点的顺序位置，再遍历第二次找到该结点的方法不可行。</p>
 <p>题目给出n是有效的，意味着n的大小不会超过链长。</p>
 <p>n为链长怎么办？❓</p>
 <p>代码：</p>
@@ -293,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/" data-id="ck21twgwy00028jl723nt2t96" class="article-share-link">Share</a>
+      <a data-url="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/" data-id="ck21zug2a0003hsl7wfrotg4d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -301,6 +302,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/10/22/面向对象程序设计-魔兽世界/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          面向对象程序设计-魔兽世界
+        
+      </div>
+    </a>
   
   
     <a href="/2019/10/09/为什么B-树适合作为索引的结构/" id="article-nav-older" class="article-nav-link-wrap">
