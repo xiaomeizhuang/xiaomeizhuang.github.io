@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/23_102.jpg">
 <meta property="og:image" content="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/25_113.jpg">
 <meta property="og:image" content="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/26_138.jpg">
-<meta property="og:updated_time" content="2019-10-23T06:47:45.958Z">
+<meta property="og:updated_time" content="2019-10-23T11:06:15.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer小结">
 <meta name="twitter:description" content="抱着好奇心翻开了剑指offer，原来是50道编程题的解题啊。随便翻了一下翻到第23题，发现讲得很通俗易懂，所以决定要把它看完（还没有看完，也不是按顺序看）。可是仔细看时发现，有些题解只描述了过程，为什么这样做却没有直白地写出来，所以我在解释部分补充了一点点自己的思考，包括具体讨论判断条件或者边界条件的情况，还包括草图（加载有点儿慢）。语言用的是C++，草图用Ilustrator画会比较久，所以暂时">
@@ -263,7 +263,7 @@
 <p>题目：</p>
 <p><a href="https://leetcode.com/problems/validate-stack-sequences/" target="_blank" rel="noopener">leetcode：946. Validate Stack Sequences</a></p>
 <p>解释：</p>
-<p>判断所给的入栈序列和出栈序列是不是指同一个栈。因此建立一个辅助栈，按照入栈序列来将元素放入栈中，再判断能否按照出栈序列出栈，入栈和出栈的操作掺杂一起，因此同一个入栈序列可以对应不同的出栈序列。以入栈序列1,2,3,4,5和出栈序列4,3,2,5,1为例，首先出栈的是4，那么需要元素1,2,3,4依次入栈，毕竟只有4在栈顶时才能将它弹出。因此，每次入栈一个元素都需要判断它（栈顶元素）是不是下一个出栈序列的元素，如果相等弹出，重复这个过程知道栈顶元素不等于下一个出栈元素为止，这时候继续将入栈序列中之后的元素入栈，❓❓❓</p>
+<p>判断所给的入栈序列和出栈序列是不是指同一个栈。因此建立一个辅助栈，按照入栈序列来将元素放入栈中，再判断能否按照出栈序列出栈，入栈和出栈的操作掺杂一起，因此同一个入栈序列可以对应不同的出栈序列。以入栈序列1,2,3,4,5和出栈序列4,3,2,5,1为例，首先出栈的是4，那么需要元素1,2,3,4依次入栈，毕竟只有4在栈顶时才能将它弹出。因此，每次入栈一个元素都需要判断它（栈顶元素）是不是下一个出栈序列的元素，如果相等弹出，重复这个过程知道栈顶元素不等于下一个出栈元素为止，这时候继续将入栈序列中之后的元素入栈，</p>
 <p><img src="22_946.jpg"></p>
 <p>代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">validateStackSequences</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; pushed, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; popped)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pushed.size()!=popped.size())</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; stackdata;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> data:pushed)</span><br><span class="line">        &#123;</span><br><span class="line">            stackdata.push(data);<span class="comment">//先push，然后判断是否相等，每次</span></span><br><span class="line">            <span class="keyword">while</span>(stackdata.size() &amp;&amp; popped[i]==stackdata.top())<span class="comment">//连续pop出321</span></span><br><span class="line">            &#123;</span><br><span class="line">                stackdata.pop();</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;     </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stackdata.empty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -331,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/" data-id="ck236590z0002bql7vm2nudsf" class="article-share-link">Share</a>
+      <a data-url="http://xiaomeizhuang.github.io/2019/10/10/剑指offer小结/" data-id="ck2365n9l0003chl77onrsep2" class="article-share-link">Share</a>
       
       
     </footer>
